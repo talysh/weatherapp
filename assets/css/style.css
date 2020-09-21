@@ -19,3 +19,28 @@ aside {
 .searched-city {
   margin-bottom: 0.2rem;
 }
+
+.forecast {
+  background-color: #047bfe;
+  color: white;
+  font-weight: 300;
+  font-size: 0.8rem;
+}
+
+.weather-icon {
+  margin-left: 1rem;
+  height: 2.3rem;
+  background-color: lightgrey;
+  border-radius: 0.8rem;
+}
+
+.forecast-date {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+.forecast-icon {
+  height: 3rem;
+  width: 3rem;
+  margin: 0.5rem auto 1rem;
+}
