@@ -1,0 +1,21 @@
+.header-text {
+  color: white;
+  font-size: 2rem;
+}
+
+aside {
+  background-color: #f8f9fa;
+}
+
+.city-and-date {
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.search-history {
+  margin-top: 1rem;
+}
+
+.searched-city {
+  margin-bottom: 0.2rem;
+}
