@@ -1,8 +1,11 @@
+/* Main website header text */
+
 .header-text {
   color: white;
   font-size: 2rem;
 }
 
+/* Query related styles */
 aside {
   background-color: #f8f9fa;
 }
@@ -16,6 +19,7 @@ aside {
   margin-top: 1rem;
 }
 
+/* Search result related styles */
 .searched-city {
   margin-bottom: 0.2rem;
 }
@@ -25,6 +29,7 @@ aside {
   color: white;
   font-weight: 300;
   font-size: 0.8rem;
+  margin-bottom: 1rem;
 }
 
 .weather-icon {
@@ -36,11 +41,26 @@ aside {
 
 .forecast-date {
   font-weight: 500;
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .forecast-icon {
   height: 3rem;
   width: 3rem;
   margin: 0.5rem auto 1rem;
+}
+
+.favorable {
+  background-color: green;
+  color: white;
+}
+
+.moderate {
+  background-color: yellow;
+  color: white;
+}
+
+.severe {
+  background-color: red;
+  color: white;
 }
