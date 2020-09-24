@@ -15,6 +15,7 @@ function getLatAndLon(cityName) {
         url: queryURL,
         method: "GET"
     }).then(function (response) {
+        console.log(response);
         searchCity(response.coord.lat, response.coord.lon, cityName);
     });
 }
@@ -25,7 +26,7 @@ function displayForecast(city, day) {
     var dateDisplay = $("<p class='forecast-date'>").text(date);
     var temperature = $("<p>").text(`Temp: ${kelvinToFahrenheit(city.daily[day].temp.day)} °F`);
     var humidity = $("<p>").text(`Humidity: ${city.daily[day].humidity}%`);
-    var weatherIcon = $("<img class='forecast-icon'>").attr("src", `http://openweathermap.org/img/wn/${city.daily[day].weather[0].icon}@2x.png`);
+    var weatherIcon = $("<img class='forecast-icon'>").attr("src", `http://openweathermap.org/img/w/${city.daily[day].weather[0].icon}.png`);
     weatherIcon.attr("alt", city.current.weather[0].main);
 
     $(`*[data-day="${day}"]`).empty();
@@ -36,23 +37,22 @@ function displayForecast(city, day) {
 // Search for city's weather information
 function searchCity(lat, lon, cityName) {
     var queryURL = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${currentWeatherApi}`;
-
     $.ajax({
         url: queryURL,
         method: "GET"
     }).then(function (response) {
+        console.log(response);
         persistLastCity(lat, lon, cityName);
         clearCityInfo();
 
         var cityAndDate = $("<p class='city-and-date'>").text(`${capitalize(cityName)} (${today})`);
-        var weatherIcon = $("<img class='weather-icon'>").attr("src", `http://openweathermap.org/img/wn/${response.current.weather[0].icon}@2x.png`);
+        var weatherIcon = $("<img class='weather-icon'>").attr("src", `http://openweathermap.org/img/w/${response.current.weather[0].icon}.png`);
         weatherIcon.attr("alt", response.current.weather[0].main);
         cityAndDate.append(weatherIcon);
         var temperature = $("<p>").text(`Temperature: ${kelvinToFahrenheit(response.current.temp)} °F`);
         var humidity = $("<p>").text(`Humidity: ${response.current.humidity}%`);
         var windSpeed = $("<p>").text(`Wind Speed: ${response.current.wind_speed} MPH`);
 
-        var uvIndex = document.createElement('p');
         var uvIndex = $("<p>").html(`UV Index: <span style="color:white; background-color:${uvIndexStyler(parseFloat(response.current.uvi))}">${response.current.uvi}</span>`);
 
         $('.search-results').append(cityAndDate, temperature, humidity, windSpeed, uvIndex);
@@ -104,7 +104,7 @@ function uvIndexStyler(uvIndex) {
         return "green";
     } else
         if (uvIndex < 7) {
-            return "yellow";
+            return "orange";
         } else {
             return "red";
         }
